@@ -60,7 +60,7 @@ class GestionController  {
    }
      }
      $products=new product;
-     $products->insertproduct($_POST['name'],$newImageName, $_POST['price']);
+     $products->insertproduct($_POST['name'],$newImageName,$_POST['price'],$_POST['quantity']);
      
   
     echo "<script>alert('Invalid  Image Extension');</script>";

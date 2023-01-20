@@ -21,6 +21,16 @@
     
   
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 .sticky{
     position:fixed !important;
     left: 0;
@@ -29,8 +39,10 @@
 
 }
 #closeDash{
-    margin-left: 90%;
+    display: none;
+    margin-left: 89%;
     margin-top: 10px;
+    cursor: pointer;
   
     font-size: 20px;
 }

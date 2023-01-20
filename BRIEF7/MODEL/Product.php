@@ -8,7 +8,7 @@ class product extends database
    private $add;
    private $delete;
    private $getrow;
-   private $update = ""; 
+    
      
    public function __Construct()
    {
@@ -33,10 +33,15 @@ class product extends database
 
 // -----------------------------------------------------------------------------------------------------------
 
-   public function insertproduct($name,$description,$price,$image)
+   public function insertproduct($name,$price,$quantity,$image,$date)
    {
       $this->conn = $this->connection();
-   $this->add= mysqli_query($this->conn,"INSERT INTO `product`(id, name,description, price, image) VALUES ('NULL','$name','$description','$image',$price) " );
+      $date = NOW();
+    var_dump( $date);
+    
+      die();
+      
+   $this->add= mysqli_query($this->conn,"INSERT INTO `product`(id,name,price,quantity,image,date_ajoute) VALUES ('NULL','$name',$price,$quantity,'$image','$date' " );
    
 
       if($this->add){
@@ -86,12 +91,12 @@ if($this->delete){
       
      
        
-       $this->$update = mysqli_query($this->conn," UPDATE product  SET name ='$name', prix =$price WHERE id=$id ");
+       $this->$select = mysqli_query($this->conn," UPDATE product  SET name ='$name', prix =$price WHERE id=$id ");
    
     
     
-     if($this->$update){
-      return $this->$update;
+     if($this->$select){
+      return $this->$select;
 }
 
     }

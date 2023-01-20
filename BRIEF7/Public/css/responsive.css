@@ -1,5 +1,7 @@
 @media (max-width:576px){
-
+    #closeDash{
+        display: block !important;
+    }
     .carouselimage{
         margin-top: 20px;
     }
@@ -12,6 +14,8 @@
         transition: 1s ease-in-out;
         z-index: 1;
     }
+
+    
    
    
 
