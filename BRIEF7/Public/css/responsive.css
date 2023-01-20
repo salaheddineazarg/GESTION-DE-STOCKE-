@@ -1,0 +1,18 @@
+@media (max-width:576px){
+
+    .carouselimage{
+        margin-top: 20px;
+    }
+    .text_card{
+        margin-top: 20px;
+    }
+    .nav-slide{
+        position: absolute !important;
+        left: -250px;
+        transition: 1s ease-in-out;
+        z-index: 1;
+    }
+   
+   
+
+}
