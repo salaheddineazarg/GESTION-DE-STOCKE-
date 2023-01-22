@@ -1,4 +1,5 @@
-<?php  require(view.'include/header.php') ?>
+<?php 
+require(view.'include/header.php') ?>
 
 <body>
     <!-- Bootstrap Static Header -->

@@ -44,16 +44,7 @@
                     <span te>Dashboard</span></a>
             </li>
 
-            <!-- Divider -->
-
-
-            <!-- Heading -->
-
-
-            <!-- Nav Item - Pages Collapse Menu -->
-
-
-            <!-- Nav Item - Utilities Collapse Menu -->
+        
 
 
             <!-- Divider -->
@@ -284,12 +275,14 @@
 
 
                     <!-- DataTales Example -->
+                    <button id="btnModal"  class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" ></button>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                                
                                 <table class="table ">
                                     <thead class="thead-primary">
                                         <tr>
@@ -301,32 +294,37 @@
                                             <th>Quantity</th>
                                             <th>total</th>
                                             <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="alert" role="alert">
+                                        <?php  foreach($products as $row):?>
+                                    <tr class="alert" role="alert">
                                             <td>
                                                 <div class="email">
-                                                    <span class="text-trunacte">Sneakers Shoes 2020 For Men </span>
-                                                    <span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
+                                                    <span><strong><?php echo $row['name']?></strong>  </span>
                                                 </div>
                                             </td>
 
                                             <td>
-                                                <div class="img" style="background-image: url(images/product-1.png);">
+                                                <div class="img" >
+                                                    <img class="image-table" src="<?php url('Public/IMAGE2/'.$row['image']) ?>" alt="">
                                                 </div>
                                             </td>
 
-                                            <td>$44.99</td>
-                                            <td class="quantity">10
-                                            </td>
-                                            <td>$89.98</td>
+                                            <td><?php echo $row['price'].'$'?></td>
+                                            <td class="quantity"><?php echo $row['quantity']?></td>
+                                            <td><?php echo $row['price']*$row['quantity'].'$'?></td>
                                             <td>
-                                                <a class="fa-solid fa-trash"></a>
+                                                <a class="fa-solid fa-trash" href="<?php url('gestion/delete/'.$row['id']) ?>"></a>
+                                            </td>
+                                            <td>
+                                                
+                                                <a id="btnUpdate" class="fa-solid fa-pen-to-square" href="<?php url('gestion/update/'.$row['id'])?>" ></a>
                                             </td>
                                         </tr>
 
-
+                                      <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -337,10 +335,13 @@
                 <!-- /.container-fluid -->
 
             </div>
+     
             <!-- End of Main Content -->
 
             <!-- Footer -->
+            
             <?php require(view . 'include\formadd.php') ?>
+            <?php require(view . 'include\formupdate.php') ?>
             <!-- End of Footer -->
             <?php require(view . 'include/footer.php') ?>
 
@@ -349,10 +350,11 @@
 
 
     </div>
+   
 
 
     <!-- End of Page Wrapper -->
-
+  
     <!-- Scroll to Top Button-->
 
 </body>

@@ -1,4 +1,7 @@
+
 <?php require(view.'include/header.php') ?>
+
+
 
 <body id="page-top">
 
@@ -141,27 +144,16 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username'] ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                              
+                               
+                                <a class="dropdown-item" href="<?php url('gestion/logout') ?>" >
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -186,7 +178,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Earnings (Monthly)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $min ?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -264,14 +256,16 @@
 
             <div class="row">
 
-            <div class="col-sm-4">
+            
+						<?php foreach($products as $row ): ?>
+                        <div class="col-sm-4 mb-4">
 							<div class="thumb-wrapper">
-								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								
 								<div class="img-box">
-									<img src="/examples/images/products/headphone.jpg" class="img-responsive" alt="">
+									<img  src="<?php url('Public/IMAGE2/'.$row['image']) ?>" class="img-responsive img-box" alt="">
 								</div>
 								<div class="thumb-content">
-									<h4>Sony Headphone</h4>									
+									<h4><?php echo $row['name'] ?></h4>									
 									<div class="star-rating">
 										<ul class="list-inline">
 											<li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -281,57 +275,15 @@
 											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
 										</ul>
 									</div>
-									<p class="item-price"> <b>$23.99</b></p>
+                                    <p class="item-price"> <b class="text-warning">QUANTITY</b> <b><?php echo $row['price'].'$' ?></b></p>
+									<p class="item-price"> <b class="text-warning">PRICE</b> <b><?php echo $row['quantity'].'$' ?></b></p>
 									
 								</div>						
 							</div>
 						</div>
-                        <div class="col-sm-4">
-							<div class="thumb-wrapper">
-								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-								<div class="img-box">
-									<img src="/examples/images/products/headphone.jpg" class="img-responsive" alt="">
-								</div>
-								<div class="thumb-content">
-									<h4>Sony Headphone</h4>									
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-                                    <p class="item-price"> <b class="text-warning">QUANTITY</b> <b>$23.99</b></p>
-									<p class="item-price"> <b class="text-warning">PRICE</b> <b>$23.99</b></p>
-									
-								</div>						
-							</div>
-						</div>			
+                        <?php endforeach ?>			
 
-                        <div class="col-sm-4">
-							<div class="thumb-wrapper">
-								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-								<div class="img-box">
-									<img src="/examples/images/products/headphone.jpg" class="img-responsive" alt="">
-								</div>
-								<div class="thumb-content">
-									<h4>Sony Headphone</h4>									
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-									<p class="item-price"> <b>$23.99</b></p>
-									
-								</div>						
-							</div>
-						</div>	
+                       
                         
             </div>
             <?php require(view.'include/footer.php') ?>
