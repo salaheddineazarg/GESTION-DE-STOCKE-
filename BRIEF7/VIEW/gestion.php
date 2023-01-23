@@ -1,4 +1,3 @@
-
 <?php require(view.'include/header.php') ?>
 
 
@@ -10,7 +9,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav  nav-slide sidebar sidebar-dark accordion" id="accordionSidebar">
-        <i class="fa-sharp fa-solid fa-xmark" id="closeDash"></i>
+            <i class="fa-sharp fa-solid fa-xmark" id="closeDash"></i>
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -49,20 +48,6 @@
                 Addons
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-
-            </li>
-
-            <!-- Nav Item - Charts -->
-
-
-            <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="<?php url('gestion/add') ?>">
                     <i class="fas fa-fw fa-table"></i>
@@ -70,7 +55,26 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                The sorted
+            </div>
+
+
+            <li class="nav-item">
+               <form action="<?php url('gestion/index') ?>" method="post">
+               <i class="fa-solid fa-chart-line-up"></i>
+                    <button class="btn text-light" type="submit" name="croissant" >Croissant</button>
+                    <i class="fa-solid fa-chart-line-down"></i>
+                    <button class="btn text-light" type="submit" name="decroissant" >Decroissant</button>
+                
+                </form>
+            
+            </a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
 
@@ -93,13 +97,20 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+                        method="POST" action="<?php url('gestion/index') ?>">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            <input list="searchs" type="text" name="search" id="search"
+                                class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
+                            <datalist id="searchs">
+                                <?php foreach($products as $row): ?>
+                                <option value="<?php echo $row['name']?>">
+                                    <?php endforeach ?>
+                            </datalist>
+
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" name="sumbitsearch" type="submit">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -118,13 +129,20 @@
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
+                                <form class="form-inline mr-auto w-100 navbar-search" method="POST"
+                                    action="<?php url('gestion/index') ?>">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input list="searchs" type="text" name="search"
+                                            class="form-control bg-light border-0 small" placeholder="Search for..."
+                                            aria-label="Search" aria-describedby="basic-addon2">
+                                        <datalist id="searchs">
+                                            <?php foreach($products as $row): ?>
+                                            <option value="<?php echo $row['name']?>">
+                                                <?php endforeach ?>
+                                        </datalist>
+
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button class="btn btn-primary" name="sumbitsearch" type="submit">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -133,10 +151,10 @@
                             </div>
                         </li>
 
-                    
+
 
                         <!-- Nav Item - Messages -->
-                        
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -144,16 +162,16 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username'] ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-primary small"><strong>
+                                        <?php echo strtoupper($_SESSION['username'])?></strong></span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                              
-                               
-                                <a class="dropdown-item" href="<?php url('gestion/logout') ?>" >
+
+
+                                <a class="dropdown-item" href="<?php url('gestion/logout') ?>">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -166,7 +184,7 @@
 
                 <!-- End of Topbar -->
 
-                
+
                 <!-- /.container-fluid -->
                 <div class="row">
 
@@ -177,11 +195,11 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Earnings (Monthly)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $min ?></div>
+                                            MIN PRICE</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $min.'$' ?></div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -195,8 +213,8 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Earnings (Annual)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                            MAX PRICE</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $max.'$' ?></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -212,11 +230,13 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            NUMBER OF PRODUCTS
                                         </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                                    <?php echo $countP ?></div>
                                             </div>
                                             <div class="col">
                                                 <div class="progress progress-sm mr-2">
@@ -242,11 +262,12 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Pending Requests</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            MOYEN OF PRICE</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $moyenne.'$' ?>
+                                        </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                     </div>
                                 </div>
                             </div>
@@ -254,39 +275,42 @@
                     </div>
                 </div>
 
-            <div class="row">
+                <div class="row">
 
-            
-						<?php foreach($products as $row ): ?>
-                        <div class="col-sm-4 mb-4">
-							<div class="thumb-wrapper">
-								
-								<div class="img-box">
-									<img  src="<?php url('Public/IMAGE2/'.$row['image']) ?>" class="img-responsive img-box" alt="">
-								</div>
-								<div class="thumb-content">
-									<h4><?php echo $row['name'] ?></h4>									
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-                                    <p class="item-price"> <b class="text-warning">QUANTITY</b> <b><?php echo $row['price'].'$' ?></b></p>
-									<p class="item-price"> <b class="text-warning">PRICE</b> <b><?php echo $row['quantity'].'$' ?></b></p>
-									
-								</div>						
-							</div>
-						</div>
-                        <?php endforeach ?>			
 
-                       
-                        
-            </div>
-            <?php require(view.'include/footer.php') ?>
+                    <?php foreach($products as $row ): ?>
+                    <div class="col-sm-4 mb-4">
+                        <div class="thumb-wrapper">
+
+                            <div class="img-box">
+                                <img src="<?php url('Public/IMAGE2/'.$row['image']) ?>" class="img-responsive img-box"
+                                    alt="">
+                            </div>
+                            <div class="thumb-content">
+                                <h4><?php echo $row['name'] ?></h4>
+                                <div class="star-rating">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                    </ul>
+                                </div>
+                                <p class="item-price"> <b class="text-warning">QUANTITY</b>
+                                    <b><?php echo $row['price'].'$' ?></b></p>
+                                <p class="item-price"> <b class="text-warning">PRICE</b>
+                                    <b><?php echo $row['quantity'].'$' ?></b></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach ?>
+
+
+
+                </div>
+                <?php require(view.'include/footer.php') ?>
 </body>
 
 </html>

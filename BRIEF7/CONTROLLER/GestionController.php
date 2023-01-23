@@ -9,12 +9,39 @@ class GestionController
       header('location:' . url2('home/index'));
 
     } else if ($_SESSION['check'] = true) {
-      $db = new product();
-      $data['products']=$db->getAllProducts();
-      $data['min'] = $db->getMin();
+     
+      if (isset($_POST['sumbitsearch'])) {
 
-      View::load('gestion',$data);
+        
+       
+        $db = new product();
+        $data['products'] = $db->search($_POST['search']);
+        $data['min'] = $db->getMin();
+        $data['max'] = $db->getMAX();
+        $data['countP'] = $db->CountProducts();
+        $data['moyenne'] = $db->moyen();
 
+        View::load('gestion', $data);
+      }else{
+        $db = new product();
+        $data['min'] = $db->getMin();
+        $data['max'] = $db->getMAX();
+        $data['countP'] = $db->CountProducts();
+        $data['moyenne'] = $db->moyen();
+        if(isset($_POST['croissant'])){
+          
+          $data['products'] = $db->getAllProductsASC();
+          
+        }else if(isset($_POST['decroissant'])){
+          $data['products'] = $db->getAllProductsDesc();
+        }else{
+          $data['products'] = $db->getAllProducts();
+        }
+       
+        
+        View::load('gestion', $data);
+
+      }
     }
 
 
@@ -25,12 +52,36 @@ class GestionController
   //  -----------------------------------------------
   public function add()
   {
-    $db = new product();
-    $data['products'] = $db->getAllProducts();
+    if (isset($_POST['sumbitsearch'])) {
 
+      
+      $db = new product();
+      $data['products'] = $db->search($_POST['search']);
+      $data['min'] = $db->getMin();
+      $data['max'] = $db->getMAX();
+      $data['countP'] = $db->CountProducts();
+      $data['moyenne'] = $db->moyen();
 
+      View::load('add', $data);
+    }else{
+      $db = new product();
+      $data['min'] = $db->getMin();
+      $data['max'] = $db->getMAX();
+      $data['countP'] = $db->CountProducts();
+      $data['moyenne'] = $db->moyen();
+      if(isset($_POST['croissant'])){
+          
+        $data['products'] = $db->getAllProductsASC();
+        
+      }else if(isset($_POST['decroissant'])){
+        $data['products'] = $db->getAllProductsDesc();
+      }else{
+        $data['products'] = $db->getAllProducts();
+      }
 
-    View::load('add', $data);
+      View::load('add', $data);
+
+    }
   }
 
 
@@ -93,7 +144,7 @@ class GestionController
   {
     $db = new product;
     $data['rowproduct'] = $db->getrow($id);
-    View::load('add', $data);
+    View::load('update', $data);
 
   }
 
@@ -103,35 +154,30 @@ class GestionController
   {
 
 
-    if (isset($_POST['updatesubmit'])) {
+    if (isset($_POST['submitedit'])) {
       $update = new product;
-      $nameupdate = $_POST['nameupdate'];
-      $priceupdate = $_POST['updateprice'];
+      $name = $_POST['name'];
+      $price = $_POST['price'];
+      $quantity = $_POST['quantity'];
 
+      if ($_FILES["image"]["size"] > 0) {
 
-
-      if ($_FILES["updateimage"]["size"] > 0) {
-
-        $tmpName = $_FILES["updateimage"]["tmp_name"];
-        $FileName = $_FILES["updateimage"]["name"];
+        $tmpName = $_FILES["image"]["tmp_name"];
+        $FileName = $_FILES["image"]["name"];
         $imageEx = explode('.', $FileName);
         $imageEx = strtolower(end($imageEx));
         $newImageName = uniqid();
         $newImageName .= '.' . $imageEx;
         move_uploaded_file($tmpName, './Public/IMAGE2/' . $newImageName);
-
-
-
-        $update->edit($id, $nameupdate, $newImageName, $priceupdate);
+        $update->edit($id,$name,$price,$quantity,$newImageName);
 
       } else {
-        $update->editwithoutimage($id, $nameupdate, $priceupdate);
+        $update->editwithoutimage($id,$name,$price,$quantity);
       }
 
-
-
-      header("Location:" . url2('gestion/index'));
+      header("Location:" . url2('gestion/add'));
     }
+  
   }
 
   public function logout () {

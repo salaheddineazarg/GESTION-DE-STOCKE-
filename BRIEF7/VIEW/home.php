@@ -4,6 +4,7 @@ require(view.'include/header.php') ?>
 <body>
     <!-- Bootstrap Static Header -->
     <div class="jumbotron bg-cover  text-white">
+        <img class="w-25 h-25" src="<?php url('Public/IMAGE2/logo.png')?>" alt="">
         <div class="container py-5 mt-md-5 text-center"  data-aos="fade-right">
             <h1 class="display-4   font-weight-bold">Gestion Pharmacy Stocke</h1>
             <p class="font-italic  mb-5">Using simple jumbotron-style component, create a nice Bootstrap 4 header with a

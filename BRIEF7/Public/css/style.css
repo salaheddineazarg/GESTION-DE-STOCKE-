@@ -94,7 +94,8 @@ body {
   background-color: #0062cc;
   font-weight: 600;
   color: #fff;
-  cursor: pointer;
+  cursor: pointer !important;
+  margin: auto;
 }
 
 .btnhome:hover {
