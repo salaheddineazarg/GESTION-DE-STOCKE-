@@ -26,7 +26,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+.num{
+    animation: all cubic-bezier(0.455, 0.03, 0.515, 0.955) 200ms;
+}
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;

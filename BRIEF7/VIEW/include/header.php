@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php url('Public/css/bootstrap.css')?>" rel="stylesheet" />
+    <link rel="shortcut icon" href="<?php url('Public/IMAGE2/logo.png')?>" type="image/x-icon">
   <!-- responsive style -->
   <link href="<?php url('Public/css/responsive.css'); ?>" rel="stylesheet" />
 

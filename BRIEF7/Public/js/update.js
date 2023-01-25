@@ -1,25 +1,25 @@
 
 
-document.getElementById("addNew").addEventListener("click",() =>{
+document.getElementById("addNew").addEventListener("click",()=>{
 
    
     var form  = document.createElement('div');
-    form.innerHTML = `<div class="mb-3">
+    form.innerHTML = `<div class="mb-3 inputDiv">
     <label for="recipient-name" class="col-form-label">Name:</label>
-    <input type="text" id="name" name="name[]" class="form-control" id="recipient-name">
+    <input type="text"  name="name[]" class="form-control name " id="recipient-name">
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3 inputDiv">
     <label for="recipient-name" class="col-form-label">Image:</label>
-    <input type="file" name="image[]" id="image" class="form-control" id="recipient-name">
+    <input type="file" name="image[]" id="image" class="form-control image" id="recipient-name">
   </div>
-  <div class="mb-3">
+  <div class="mb-3 inputDiv">
     <label for="message-text" class="col-form-label">Price:</label>
-    <input class="form-control" id="price" type="number" name="price[]" id="message-text"></input>
+    <input class="form-control price " type="number" name="price[]" id="message-text"></input>
   </div>
-  <div class="mb-3">
+  <div class="mb-3 inputDiv">
     <label for="message-text" class="col-form-label">Quantity:</label>
-    <input class="form-control" id="quantity" type="number" name="quantity[]" id="message-text"></input>
+    <input class="form-control  quantityAdd "  type="number" name="quantity[]" id="message-text"></input>
   </div>`
  
 
@@ -31,14 +31,7 @@ document.getElementById("addNew").addEventListener("click",() =>{
     
 
 
-})
+});
 
 
 
-// document.getElementById("btnUpdate").addEventListener("click",() =>{
-
-    
-
-//     document.getElementById("btnModal").click()
-
-// })

@@ -13,7 +13,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <img src="<?php url('Public/IMAGE2/logo.png')?>" class="" alt="Bootstrap" width="40" height="34">
                 </div>
                 <div class="sidebar-brand-text mx-3">CureCo</div>
             </a>
@@ -65,18 +65,18 @@
 
 
             <li class="nav-item">
-               <form action="<?php url('gestion/index') ?>" method="post">
-               <i class="fa-solid fa-chart-line-up"></i>
-                    <button class="btn text-light" type="submit" name="croissant" >Croissant</button>
+                <form action="<?php url('gestion/index') ?>" method="post">
+                    <i class="fa-solid fa-chart-line-up"></i>
+                    <button class="btn text-light" type="submit" name="croissant">Croissant</button>
                     <i class="fa-solid fa-chart-line-down"></i>
-                    <button class="btn text-light" type="submit" name="decroissant" >Decroissant</button>
-                
+                    <button class="btn text-light" type="submit" name="decroissant">Decroissant</button>
+
                 </form>
-            
-            </a>
+
+                </a>
             </li>
 
-            <!-- Sidebar Toggler (Sidebar) -->
+
 
 
         </ul>
@@ -164,7 +164,8 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-primary small"><strong>
                                         <?php echo strtoupper($_SESSION['username'])?></strong></span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="<?php url('Public/IMAGE2/logo.png')?>"
+                                    width="20" height="15">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -196,7 +197,9 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             MIN PRICE</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $min.'$' ?></div>
+                                        <div class="h5 mb-0 font-weight-bold d-inline text-gray-800 num " id=""
+                                            ><?php echo $min.'$'?></div>
+                                        
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -214,7 +217,9 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             MAX PRICE</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $max.'$' ?></div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800 d-inline num " id=""
+                                            ><?php echo $max.'$' ?></div>
+                                        
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -235,15 +240,15 @@
                                         </div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                    <?php echo $countP ?></div>
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800 num"
+                                                    ><?php echo $countP ?>
+                                                </div>
                                             </div>
                                             <div class="col">
-                                                <div class="progress progress-sm mr-2">
-                                                    <div class="progress-bar bg-info" role="progressbar"
-                                                        style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
+
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
+                                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -261,10 +266,11 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            MOYEN OF PRICE</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $moyenne.'$' ?>
-                                        </div>
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            MOYENNE PRICE</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800 d-inline num"
+                                          ><?php echo $moyenne.'$'?></div>
+                                       
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -274,6 +280,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <div class="row">
 
@@ -288,20 +295,20 @@
                             </div>
                             <div class="thumb-content">
                                 <h4><?php echo $row['name'] ?></h4>
-                                <div class="star-rating">
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                        <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                    </ul>
-                                </div>
-                                <p class="item-price"> <b class="text-warning">QUANTITY</b>
-                                    <b><?php echo $row['price'].'$' ?></b></p>
-                                <p class="item-price"> <b class="text-warning">PRICE</b>
-                                    <b><?php echo $row['quantity'].'$' ?></b></p>
 
+                                <p class="item-price"> <b class="text-warning">Price</b>
+                                    <b><?php echo $row['price'].'$' ?></b>
+                                </p>
+                                <p class="item-price"> <b class="text-warning">Quantity</b>
+                                    <b><?php echo $row['quantity'] ?></b>
+                                </p>
+
+                            </div>
+                            <div class="star-rating">
+                                <a id="btnUpdate" class="fa-solid fa-pen-to-square text-danger"
+                                    href="<?php url('gestion/update/'.$row['id'])?>"></a>
+                                <a class="fa-solid fa-trash text-danger"
+                                    href="<?php url('gestion/delete/'.$row['id']) ?>"></a>
                             </div>
                         </div>
                     </div>
@@ -310,6 +317,7 @@
 
 
                 </div>
+
                 <?php require(view.'include/footer.php') ?>
 </body>
 

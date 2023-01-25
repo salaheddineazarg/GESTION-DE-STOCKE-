@@ -8,7 +8,7 @@ class database{
     protected $connection;
     protected $db;
  
-    public function connection(){
+    public function connection(){   
  
        
             $connection = new mysqli($this->host, $this->username, $this->password, $this->database);

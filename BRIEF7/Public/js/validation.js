@@ -7,7 +7,7 @@ document.getElementById("formLogin").onsubmit = (e) => {
    let validationPassword = passreg.test(passwordInput);
 
 
-  if( nameInput == "" || passwordInput == "" || nameInput.length <= 5 || passwordInput.length <= 5 ){
+  if( nameInput == "" || passwordInput == "" || nameInput.length <= 5 ){
 
     Swal.fire({
         icon: 'error',
@@ -37,3 +37,4 @@ document.getElementById("formLogin").onsubmit = (e) => {
   }
   
 }
+

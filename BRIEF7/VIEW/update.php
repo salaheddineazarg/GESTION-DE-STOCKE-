@@ -12,6 +12,7 @@
     <!-- <link rel="stylesheet" href="<?php url('Public/css/style.css') ?>"> -->
     <link rel="stylesheet" href="<?php url('Public\css\dashbord.css') ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="shortcut icon" href="<?php url('Public/IMAGE2/logo.png')?>" type="image/x-icon">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -28,7 +29,7 @@
 
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <img src="<?php url('Public/IMAGE2/logo.png')?>" class="" alt="Bootstrap" width="40" height="34">
                 </div>
                 <div class="sidebar-brand-text mx-3">CureCo</div>
             </a>
@@ -131,7 +132,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-primary small"><strong>
                                         <?php echo strtoupper($_SESSION['username'])?></strong></span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                        <img class="img-profile rounded-circle" src="<?php url('Public/IMAGE2/logo.png')?>" width="20" height="15">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -152,27 +153,27 @@
                 <section class="row justify-content-md-center">
                     <div class="card col-md-8">
                         <h5 class="text-center mb-4">Powering world-class companies</h5>
-                        <form method="POST" action="<?php url('gestion/updateproducts/'.$rowproduct['id'])?>" enctype="multipart/form-data">
+                        <form method="POST" id="formUpdate" action="<?php url('gestion/updateproducts/'.$rowproduct['id'])?>" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Name:</label>
-                                <input type="text" name="name" value="<?php echo $rowproduct['name'] ?>" class="form-control" id="recipient-name">
+                                <input type="text" name="name" value="<?php echo $rowproduct['name'] ?>" class="form-control  " id="name">
                             </div>
 
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Image:</label>
-                                <input type="file" name="image" class="form-control" id="recipient-name">
+                                <input type="file" name="image" class="form-control " id="image">
                             </div>
                             <div class="mb-3">
                               
-                                <img class="img-edit" src="<?php url('Public/IMAGE2/'.$rowproduct['image']) ?>" alt="" >
+                                <img class="img-edit w-25 h-25 " src="<?php url('Public/IMAGE2/'.$rowproduct['image']) ?>" alt="" >
                             </div>
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Price:</label>
-                                <input class="form-control"  value="<?php echo $rowproduct['price'] ?>" type="number" name="price" id="message-text"></input>
+                                <input class="form-control "  value="<?php echo $rowproduct['price'] ?>" type="number" name="price" id="price"></input>
                             </div>
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Quantity:</label>
-                                <input class="form-control"  value="<?php echo $rowproduct['quantity'] ?>" type="number" name="quantity" id="message-text"></input>
+                                <input class="form-control "  value="<?php echo $rowproduct['quantity'] ?>" type="number" name="quantity" id="quantityUpdate"></input>
                             </div>
 
 
